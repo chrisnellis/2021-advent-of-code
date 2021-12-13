@@ -97,6 +97,7 @@ public class day3b {
                 break;
             }
 
+//           Flip the 0 and 1 to represent the separate rules for c02 scrubbing factor
             if (listOf1s[i] >= numberOfLines / 2.0) {
                 builder.append("0");
             } else {
