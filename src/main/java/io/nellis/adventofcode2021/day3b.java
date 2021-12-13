@@ -14,9 +14,12 @@ public class day3b {
         int c02ScrubberRating = 0;
 //        Calculate O2 generator rating
         System.out.println("Oxygen Generator rating:");
+//        Intuition: Input is 12 columns long. For each column in the file, count the number of 1s that appear for later analysis
         var listOf1s = new Integer[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         StringBuilder builder = new StringBuilder();
 
+//        Since the algorithm for determining the rating depends on the last column's value, we loop through the
+//        listOf1s that tracks the number of 1s at each column
         for (int i = 0; i < listOf1s.length; i++) {
             var numberOfLines = 0;
             Scanner scanner = new Scanner(file);
@@ -25,6 +28,7 @@ public class day3b {
             while (scanner.hasNextLine()) {
                 var currentLine = scanner.nextLine();
 
+//                This is a slightly clever interpretation of the 'only match
                 if (currentLine.startsWith(builder.toString())) {
                     lastMatchingLine = currentLine;
                     if (currentLine.charAt(i) == '1') {
@@ -35,6 +39,7 @@ public class day3b {
             }
             scanner.close();
 
+//            If only one line matched the string builder, it is the last line considered and therefore the answer
             if (numberOfLines == 1) {
                 System.out.println(lastMatchingLine);
                 oxygenGeneratorRating = Integer.parseInt(lastMatchingLine, 2);
@@ -50,9 +55,10 @@ public class day3b {
             }
 
 //        Running this loop without the below case produced no output. The answer in this case must be the string
-//        builder, because the final loop had two matching strings: one ending in 0 and the other ending in 1. Because
-//        both possibilities existed, whichever value was set to the string builder must be in the list and will
-//        therefore be the last remaining value in the list
+//        builder, because the final execution of this loop had two matching strings: one ending in 0 and the other
+//        ending in 1. Because both possibilities existed (and we can't iterate again), whichever value was set to the
+//        string builder using the defined rules will certainly be in the list and will therefore represent the correct
+//        answer
             if (numberOfLines == 2) {
                 System.out.println(builder);
                 oxygenGeneratorRating = Integer.parseInt(builder.toString(), 2);
