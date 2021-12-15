@@ -124,6 +124,7 @@ public class day4b {
                     }
 
                     winningBoardIDs.add(i1);
+                    winningScore = sumOfUnmarkedNumbers * numberDrawn;
                     System.out.println(String.format("Number Drawn: %s \t Board ID: %s\t Winning Score: %s", numberDrawn, i1, sumOfUnmarkedNumbers * numberDrawn));
                 }
             }
