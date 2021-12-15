@@ -64,8 +64,6 @@ public class day4b {
         Integer winningScore = null;
 
         for (Integer numberDrawn : numbersToBeDrawn) {
-            winningNumber = numberDrawn;
-
             for (int i1 = 0; i1 < bingoBoards.size(); i1++) {
                 if (winningBoardIDs.contains(i1)) {
                     continue;
